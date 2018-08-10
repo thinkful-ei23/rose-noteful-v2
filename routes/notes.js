@@ -100,10 +100,12 @@ router.put('/:id', (req, res, next) => {
     
   };
   
-  const updateableFields = ['title', 'content', 'folderId'];
+  const updateableFields = ['title', 'content'];
   updateableFields.forEach(field => {
     if (field in req.body) { //if title is present in body, if so, go to next one (content)
       updateObj[field] = req.body[field];
+    } if ('folderId' in req.body) {
+      updateObj['folder_id'] = req.body['folderId'];
     }
   });
   //Update note in notes table
