@@ -76,7 +76,7 @@ router.get('/:id', (req, res, next) => {
         next({status : 400});
       }
       if (result) { const hydrated = hydrateNotes(result);
-        res.json(hydrated);
+        res.json(hydrated[0]);
       } else {
         next();
       } 
